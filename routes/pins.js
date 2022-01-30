@@ -12,12 +12,6 @@ const nameCheck = check('username')
   .trim()
   .escape();
 
-const noteCheck = check('note')
-  .not()
-  .isEmpty()
-  .trim()
-  .escape();
-
 const longCheck = check('long').isNumeric();
 
 const latCheck = check('lat').isNumeric();
