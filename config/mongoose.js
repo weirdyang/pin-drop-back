@@ -8,12 +8,7 @@ const connectionString = process.env.NODE_ENV === 'test'
 function mongooseSetUp() {
   debug(connectionString, 'connection string');
   // catch to catch initial connection error
-  mongoose.connect(connectionString, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-  }).catch((err) => {
+  mongoose.connect(connectionString).catch((err) => {
     debug(err, 'cannot connect');
   });
   mongoose.connection.on('error', (error) => {

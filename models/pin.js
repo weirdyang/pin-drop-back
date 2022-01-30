@@ -9,7 +9,7 @@ const PinSchema = new mongoose.Schema(
     note: {
       type: String,
       require: false,
-      default: 'No note',
+      default: '',
       min: 5,
     },
     lat: {
