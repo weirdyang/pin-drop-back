@@ -23,14 +23,20 @@ const createPin = async (req, res, next) => {
     return handleError(error, next);
   }
 };
-
+const getUtcShortDate = () => {
+  const current = new Date();
+  const day = current.getUTCDate();
+  const month = current.getUTCMonth() + 1;
+  const year = current.getUTCFullYear();
+  return new Date(`${month}/${day}/${year}`).toDateString();
+};
 // GET ALL PINS
 const getPins = async (req, res) => {
   try {
     const pins = await Pin.find(
       {
         to: {
-          $gte: `${new Date().toISOString()}`,
+          $gte: `${getUtcShortDate()}`,
         },
       },
     );
